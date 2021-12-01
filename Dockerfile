@@ -1,11 +1,12 @@
-FROM python:2.7
+FROM python:3.9
 
-ADD app/requirements.txt /requirements.txt
-RUN pip install -r requirements.txt
-
-EXPOSE 5001
+#RUN /usr/local/bin/python -m pip install --upgrade pip
 
 ADD app /opt/app
 WORKDIR /opt/app
 
-ENTRYPOINT ["python", "hello.py"]
+RUN pip install -r requirements.txt
+
+EXPOSE 5001
+
+ENTRYPOINT ["python", "main.py"]
